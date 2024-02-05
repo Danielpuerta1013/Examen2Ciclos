@@ -8,6 +8,10 @@ import java.util.Scanner;
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
+        Integer contadorJuegos=0;
+        Integer contadorGanadas=0;
+        Integer contadorPerdidas=0;
+        Integer contadorEmpates=0;
         Scanner sc=new Scanner(System.in);
         int opcionMenu;
         System.out.println("taller para el parcial 2");
@@ -32,6 +36,7 @@ public class Main {
                 System.out.println("el total de su compra es de: $" +totalCompra);
                 
             } else if (opcionMenu==2) {
+
                 System.out.println("Bienvenido a piedra, papel o tijera");
                 System.out.println("ingrese una opcion: piedra/papel/tijera");
                 sc.nextLine();
@@ -42,21 +47,29 @@ public class Main {
                     String[] opciones ={"piedra","papel","tijera"};
                     int opcionInt= random.nextInt(opciones.length);
                     String opcionPc=opciones[opcionInt];
+                    contadorJuegos++;
                     if (opcionUsuario.equals(opcionPc)){
                         System.out.println("empate de la maquina con: "+opcionPc);
+                        contadorEmpates++;
                     } else if ((opcionUsuario.equals("piedra") && opcionPc.equals("tijera")) ||
                             (opcionUsuario.equals("papel") && opcionPc.equals("piedra")) ||
                             (opcionUsuario.equals("tijera") && opcionPc.equals("papel")) ) {
                         System.out.println(" ganaste, la computadora saco: "+opcionPc);
+                        contadorGanadas++;
 
                     }else {
                         System.out.println("la computadora gana con: "+opcionPc);
+                        contadorPerdidas++;
                     }
 
 
                 }else{
                     System.out.println("opcion no valida");
                 }
+                System.out.println("usted ha jugado: "+contadorJuegos+" veces");
+                System.out.println("usted ha ganado: "+contadorGanadas+ " veces");
+                System.out.println("usted ha empatado: "+contadorEmpates+ " veces");
+                System.out.println("usted ha ganado: "+contadorPerdidas+ " veces");
             } else if (opcionMenu==3){
                 System.out.println("hasta luego");
 
